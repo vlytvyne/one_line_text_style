@@ -1,0 +1,14 @@
+one_line_text_style:
+  size:
+    prefix: size
+    step: 2
+    min: 6
+    max: 48
+  color:
+    prefix: cc
+    values:
+      red: '0xFFAAAAAA'
+  font_family:
+    prefix: ff
+    values:
+      dmsans: 'DM Sans'
