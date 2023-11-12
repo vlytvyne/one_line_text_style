@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 import 'package:one_line_text_style/src/code_generator.dart';
+import 'package:one_line_text_style/src/text_style_extention_builder_factory.dart';
 import 'package:yaml/yaml.dart';
 
 Future<void> main(List<String> args) async {
@@ -14,7 +15,7 @@ Future<void> main(List<String> args) async {
 
   final config = _extractConfig(parsedArgs['config-path']);
 
-  print(CodeGenerator(config).generate());
+  print(CodeGenerator(TextStyleExtensionBuilderFactory(config)).generate());
 }
 
 
