@@ -16,8 +16,17 @@ one_line_text_style:
     prefix: w
     apply_prefix_to_custom_values: true
     custom_values:
-      extra_thin: 100
+      extraThin: 100
   font_family:
     prefix: ff
     custom_values:
       dmsans: 'DM Sans'
+  overflow:
+    prefix: ''
+  style:
+    prefix: ''
+  decoration:
+    prefix: ''
+  decoration_style:
+    prefix: ''
+

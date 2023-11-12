@@ -116,7 +116,7 @@ class TextStyleExtensionBuilderFactory {
     return TextStyleExtensionBuilder(
       name: 'FontFamilyExtension',
       prefix: prefix,
-      mapper: (value) => Code('copyWith(fontFamily: $value,)'),
+      mapper: (value) => Code('copyWith(fontFamily: \'$value\',)'),
       customValues: customValues,
     );
   }
