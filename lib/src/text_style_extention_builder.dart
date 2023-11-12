@@ -40,8 +40,8 @@ class TextStyleExtensionBuilder {
     String? customName,
   }) {
     String formattedName = _getFormattedGetterName(
-        value: value,
-        customName: customName
+      value: value,
+      customName: customName,
     );
 
     return Method((m) => m
@@ -58,27 +58,21 @@ class TextStyleExtensionBuilder {
     String? customName,
   }) {
     if (customName != null) {
-
       if (applyPrefixToCustomValues) {
-
         if (prefix != null && prefix!.isNotEmpty) {
           return prefix! + _capitalize(customName);
         } else {
           return customName;
         }
-
       } else {
         return customName;
       }
-
     } else {
-
       if (prefix != null && prefix!.isNotEmpty) {
         return prefix! + _capitalize(value);
       } else {
         return value;
       }
-
     }
   }
 

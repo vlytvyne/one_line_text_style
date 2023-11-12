@@ -1,16 +1,22 @@
 one_line_text_style:
   size:
+    prefix: s
     step: 10
     min: 10
     max: 40
+    apply_prefix_to_custom_values: true
     custom_values:
       medium: 30
       large: 40
-    apply_prefix_to_custom_values: false
   color:
     prefix: col
     custom_values:
-      red: '0xFFAAAAAA'
+      yellow: '#AAAAAA'
+  weight:
+    prefix: w
+    apply_prefix_to_custom_values: true
+    custom_values:
+      extra_thin: 100
   font_family:
     prefix: ff
     custom_values:

@@ -13,7 +13,6 @@ Future<void> main(List<String> args) async {
   final parsedArgs = parser.parse(args);
 
   final config = _extractConfig(parsedArgs['config-path']);
-  // print(config['color']['values']['red']);
 
   print(CodeGenerator(config).generate());
 }
