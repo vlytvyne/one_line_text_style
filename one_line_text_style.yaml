@@ -1,14 +1,17 @@
 one_line_text_style:
   size:
-    prefix: size
-    step: 2
-    min: 6
-    max: 48
+    step: 10
+    min: 10
+    max: 40
+    custom_values:
+      medium: 30
+      large: 40
+    apply_prefix_to_custom_values: false
   color:
-    prefix: cc
-    values:
+    prefix: col
+    custom_values:
       red: '0xFFAAAAAA'
   font_family:
     prefix: ff
-    values:
+    custom_values:
       dmsans: 'DM Sans'

@@ -2,12 +2,12 @@ import 'package:code_builder/code_builder.dart';
 
 class TextStyleExtensionBuilder {
 
-  final String name;
-  final Code Function(String value) mapper;
-  final List<String>? values;
-  final String? prefix;
-  final Map<String, String>? customValues;
-  final bool applyPrefixToCustomValues;
+  String name;
+  Code Function(String value) mapper;
+  List<String>? values;
+  String? prefix;
+  Map<String, String>? customValues;
+  bool applyPrefixToCustomValues;
 
   TextStyleExtensionBuilder({
     required this.name,

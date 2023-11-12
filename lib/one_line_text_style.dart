@@ -2,6 +2,7 @@ library one_line_text_style;
 
 import 'package:flutter/material.dart';
 
+/// CONFIGABLE
 extension SizeExtension on TextStyle {
 
   TextStyle get size14 => copyWith(
@@ -34,6 +35,7 @@ extension WeightExtension on TextStyle {
 
 }
 
+/// CONFIGABLE
 extension ColorExtension on TextStyle {
 
   TextStyle get white => copyWith(
@@ -106,6 +108,7 @@ extension DecorationStyleExtension on TextStyle {
 
 }
 
+/// CONFIGABLE
 extension FontFamilyExtension on TextStyle {
 
   TextStyle get nocturne => copyWith(

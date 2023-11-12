@@ -1,9 +1,7 @@
 import 'dart:io';
 
-import 'package:code_builder/code_builder.dart';
-import 'package:dart_style/dart_style.dart';
-import 'package:one_line_text_style/src/text_style_extention_builder.dart';
 import 'package:args/args.dart';
+import 'package:one_line_text_style/src/code_generator.dart';
 import 'package:yaml/yaml.dart';
 
 Future<void> main(List<String> args) async {
@@ -14,13 +12,15 @@ Future<void> main(List<String> args) async {
 
   final parsedArgs = parser.parse(args);
 
-  final config = getConfig(parsedArgs['config-path']);
-  print(config['color']['values']['red']);
+  final config = _extractConfig(parsedArgs['config-path']);
+  // print(config['color']['values']['red']);
 
-  // codeBuild();
+  print(CodeGenerator(config).generate());
 }
 
-Map<String, dynamic> getConfig(String? configFilePath,) {
+
+/// https://github.com/jonbhanson/flutter_native_splash/blob/master/lib/cli_commands.dart
+Map<String, dynamic> _extractConfig(String? configFilePath,) {
   File file;
 
   if (configFilePath != null) {
@@ -44,11 +44,10 @@ Map<String, dynamic> getConfig(String? configFilePath,) {
     );
   }
 
-  // yamlMap has the type YamlMap, which has several unwanted side effects
-  return _yamlToMap(yamlMap['one_line_text_style'] as YamlMap);
+  return _convertYamlToMap(yamlMap['one_line_text_style'] as YamlMap);
 }
 
-Map<String, dynamic> _yamlToMap(YamlMap yamlMap) {
+Map<String, dynamic> _convertYamlToMap(YamlMap yamlMap) {
   final Map<String, dynamic> map = <String, dynamic>{};
 
   for (final MapEntry<dynamic, dynamic> entry in yamlMap.entries) {
@@ -61,112 +60,10 @@ Map<String, dynamic> _yamlToMap(YamlMap yamlMap) {
       }
       map[entry.key as String] = list;
     } else if (entry.value is YamlMap) {
-      map[entry.key as String] = _yamlToMap(entry.value as YamlMap);
+      map[entry.key as String] = _convertYamlToMap(entry.value as YamlMap);
     } else {
       map[entry.key as String] = entry.value;
     }
   }
   return map;
-}
-
-void codeBuild() {
-  final extensionSizeBuilder = TextStyleExtensionBuilder(
-    name: 'SizeExtension',
-    prefix: 'size',
-    values: ['14', '16', '18',],
-    mapper: (value) => Code('copyWith(fontSize: $value,)'),
-  );
-
-  final extensionWeightBuilder = TextStyleExtensionBuilder(
-    name: 'WeightExtension',
-    prefix: 'w',
-    values: ['600', '700',],
-    mapper: (value) => Code('copyWith(fontWeight: FontWeight.w${value},)'),
-    customValues: {
-      'semibold': '600',
-      'bold': '700',
-    },
-    applyPrefixToCustomValues: false,
-  );
-
-  final extensionColorBuilder = TextStyleExtensionBuilder(
-    name: 'ColorExtension',
-    prefix: 'color',
-    mapper: (value) => Code('copyWith(color: const Color($value),)'),
-    customValues: {
-      'white': '0xFFFFFFFF',
-      'black': '0xFF000000',
-      'grey': '0xFF9E9E9E',
-      'red': '0xFFF44336',
-    }
-  );
-
-  final extensionStyleBuilder = TextStyleExtensionBuilder(
-    name: 'StyleExtension',
-    prefix: 'style',
-    values: ['italic', 'normal',],
-    mapper: (value) => Code('copyWith(fontStyle: FontStyle.$value,)'),
-  );
-
-  final extensionDecorationBuilder = TextStyleExtensionBuilder(
-    name: 'DecorationExtension',
-    values: ['underline', 'overline', 'lineThrough',],
-    mapper: (value) => Code('copyWith(decoration: TextDecoration.$value,)'),
-  );
-
-  final extensionDecorationStyleBuilder = TextStyleExtensionBuilder(
-    name: 'DecorationStyleExtension',
-    values: ['solid', 'double', 'dotted', 'dashed', 'wavy'],
-    mapper: (value) => Code('copyWith(decorationStyle: TextDecorationStyle.$value,)'),
-  );
-
-  final extensionFontFamilyBuilder = TextStyleExtensionBuilder(
-    name: 'FontFamilyExtension',
-    mapper: (value) => Code('copyWith(fontFamily: $value,)'),
-    customValues: {
-      'nocturne': "'NocturneSerif'",
-      'dmsans': "'DMSans'",
-    }
-  );
-
-  final extensionOverflowBuilder = TextStyleExtensionBuilder(
-    name: 'OverflowExtension',
-    prefix: 'overflow',
-    values: ['clip', 'fade', 'ellipsis', 'visible'],
-    mapper: (value) => Code('copyWith(overflow: TextOverflow.$value,)'),
-  );
-
-
-  print(assembleDartCode([
-    extensionSizeBuilder,
-    extensionWeightBuilder,
-    extensionColorBuilder,
-    extensionStyleBuilder,
-    extensionDecorationBuilder,
-    extensionDecorationStyleBuilder,
-    extensionFontFamilyBuilder,
-    extensionOverflowBuilder,
-  ]));
-}
-
-String assembleDartCode(List<TextStyleExtensionBuilder> builders) {
-  final emitter = DartEmitter();
-
-  final rawDartCodeChunks = builders.map((builder) =>
-    builder.build().accept(emitter).toString(),
-  ).toList();
-
-  final importDirective = Directive.import('package:flutter/material.dart');
-  rawDartCodeChunks.insert(0, importDirective.accept(emitter).toString());
-
-  final rawDartCode = rawDartCodeChunks.reduce((acc, next) => '$acc\n$next');
-  return formatDartCode(rawDartCode);
-}
-
-String formatDartCode(String code) {
-  return DartFormatter().format(code)
-    .replaceAll('        ', '    ')
-    .replaceAll('      ', '  ')
-    .replaceAll(');', ');\n')
-    .replaceAll('on TextStyle {', 'on TextStyle {\n');
 }
