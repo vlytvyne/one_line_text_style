@@ -1,10 +1,10 @@
 one_line_text_style:
   size:
     prefix: s
-    step: 10
-    min: 10
-    max: 40
-    apply_prefix_to_custom_values: true
+    step: 2
+    min: 8
+    max: 10
+    apply_prefix_to_custom_values: false
     custom_values:
       medium: 30
       large: 40
@@ -14,7 +14,7 @@ one_line_text_style:
       yellow: '#AAAAAA'
   weight:
     prefix: w
-    apply_prefix_to_custom_values: true
+    apply_prefix_to_custom_values: false
     custom_values:
       extraThin: 100
   font_family:
@@ -22,11 +22,11 @@ one_line_text_style:
     custom_values:
       dmsans: 'DM Sans'
   overflow:
-    prefix: ''
+    prefix: 'over'
   style:
     prefix: ''
   decoration:
     prefix: ''
   decoration_style:
-    prefix: ''
+    prefix: 'ds'
 

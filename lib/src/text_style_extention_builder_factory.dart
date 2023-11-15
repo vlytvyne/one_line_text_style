@@ -1,38 +1,37 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:one_line_text_style/src/olts_config.dart';
 import 'package:one_line_text_style/src/text_style_extention_builder.dart';
 
 class TextStyleExtensionBuilderFactory {
 
-  final Map<String, dynamic> config;
+  final OltsConfig config;
 
   TextStyleExtensionBuilderFactory(this.config);
 
   TextStyleExtensionBuilder get size {
-    final sizeConfig = config['size'];
-
     String prefix;
     List<String> values;
     Map<String, String> customValues = {};
     bool applyPrefixToCustomValues;
 
-    prefix = sizeConfig?['prefix'] ?? 'size';
+    prefix = config.sizeConfig?.prefix ?? 'size';
     if (prefix.isEmpty) {
       prefix = 'size';
     }
 
-    final int minSize = sizeConfig?['min'] ?? 8;
-    final int maxSize = sizeConfig?['max'] ?? 56;
-    final int step = sizeConfig?['step'] ?? 2;
+    final int minSize = config.sizeConfig?.min ?? 8;
+    final int maxSize = config.sizeConfig?.max ?? 56;
+    final int step = config.sizeConfig?.step ?? 2;
 
     values = List.generate(
-        (maxSize - minSize) ~/ step + 1,
-            (index) => (minSize + index * step).toString()
+      (maxSize - minSize) ~/ step + 1,
+      (index) => (minSize + index * step).toString(),
     ).toList();
 
-    customValues.addAll(_convertToStringMap(sizeConfig?['custom_values']));
+    customValues.addAll(config.sizeConfig?.customValues ?? {});
 
     applyPrefixToCustomValues =
-        sizeConfig?['apply_prefix_to_custom_values'] as bool? ?? true;
+        config.sizeConfig?.applyPrefixToCustomValues ?? true;
 
     return TextStyleExtensionBuilder(
       name: 'SizeExtension',
@@ -45,12 +44,10 @@ class TextStyleExtensionBuilderFactory {
   }
 
   TextStyleExtensionBuilder get color {
-    final colorConfig = config['color'];
-
     String? prefix;
     Map<String, String> customValues = {};
 
-    prefix = colorConfig?['prefix'];
+    prefix = config.colorConfig?.prefix;
 
     customValues.addAll({
       'white': '0xFFFFFFFF',
@@ -58,7 +55,7 @@ class TextStyleExtensionBuilderFactory {
       'grey': '0xFF9E9E9E',
       'red': '0xFFF44336',
     });
-    customValues.addAll(_convertToStringMap(colorConfig?['custom_values']));
+    customValues.addAll(config.colorConfig?.customValues ?? {});
 
     return TextStyleExtensionBuilder(
       name: 'ColorExtension',
@@ -75,14 +72,12 @@ class TextStyleExtensionBuilderFactory {
   }
 
   TextStyleExtensionBuilder get weight {
-    final weightConfig = config['weight'];
-
     String prefix;
     List<String> values = ['100', '200', '300', '400', '500', '600', '700', '800', '900'];
     Map<String, String> customValues = {};
     bool applyPrefixToCustomValues;
 
-    prefix = weightConfig?['prefix'] ?? 'w';
+    prefix = config.weightConfig?.prefix ?? 'w';
     if (prefix.isEmpty) {
       prefix = 'w';
     }
@@ -91,10 +86,10 @@ class TextStyleExtensionBuilderFactory {
       'semibold': '600',
       'bold': '700',
     });
-    customValues.addAll(_convertToStringMap(weightConfig?['custom_values']));
+    customValues.addAll(config.weightConfig?.customValues ?? {});
 
     applyPrefixToCustomValues =
-        weightConfig?['apply_prefix_to_custom_values'] as bool? ?? true;
+        config.weightConfig?.applyPrefixToCustomValues ?? true;
 
     return TextStyleExtensionBuilder(
       name: 'WeightExtension',
@@ -108,10 +103,8 @@ class TextStyleExtensionBuilderFactory {
   }
 
   TextStyleExtensionBuilder get fontFamily {
-    final fontFamilyConfig = config['font_family'];
-
-    String? prefix = fontFamilyConfig?['prefix'];
-    Map<String, String>? customValues = _convertToStringMap(fontFamilyConfig?['custom_values']);
+    String? prefix = config.fontFamilyConfig?.prefix;
+    Map<String, String>? customValues = config.fontFamilyConfig?.customValues ?? {};
 
     return TextStyleExtensionBuilder(
       name: 'FontFamilyExtension',
@@ -122,9 +115,7 @@ class TextStyleExtensionBuilderFactory {
   }
 
   TextStyleExtensionBuilder get style {
-    final styleConfig = config['style'];
-
-    String? prefix = styleConfig?['prefix'];
+    String? prefix = config.styleConfig?.prefix;
 
     return TextStyleExtensionBuilder(
       name: 'StyleExtension',
@@ -135,9 +126,7 @@ class TextStyleExtensionBuilderFactory {
   }
 
   TextStyleExtensionBuilder get decoration {
-    final decorationConfig = config['decoration'];
-
-    String? prefix = decorationConfig?['prefix'];
+    String? prefix = config.decorationConfig?.prefix;
 
     return TextStyleExtensionBuilder(
       name: 'DecorationExtension',
@@ -148,9 +137,7 @@ class TextStyleExtensionBuilderFactory {
   }
 
   TextStyleExtensionBuilder get decorationStyle {
-    final decorationStyleConfig = config['decoration_style'];
-
-    String? prefix = decorationStyleConfig?['prefix'];
+    String? prefix = config.decorationStyleConfig?.prefix;
 
     return TextStyleExtensionBuilder(
       name: 'DecorationStyleExtension',
@@ -161,9 +148,7 @@ class TextStyleExtensionBuilderFactory {
   }
 
   TextStyleExtensionBuilder get overflow {
-    final overflowConfig = config['overflow'];
-
-    String prefix = overflowConfig?['prefix'] ?? 'overflow';
+    String prefix = config.overflowConfig?.prefix ?? 'overflow';
 
     return TextStyleExtensionBuilder(
       name: 'OverflowExtension',
@@ -171,13 +156,6 @@ class TextStyleExtensionBuilderFactory {
       values: ['clip', 'fade', 'ellipsis', 'visible'],
       mapper: (value) => Code('copyWith(overflow: TextOverflow.$value,)'),
     );
-  }
-
-  Map<String, String> _convertToStringMap(Map<String, dynamic>? dataMap) {
-    if (dataMap == null) {
-      return {};
-    }
-    return Map.fromEntries(dataMap.entries.map((e) => MapEntry(e.key, e.value.toString())));
   }
 
 }

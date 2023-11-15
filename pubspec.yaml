@@ -13,6 +13,7 @@ dependencies:
   code_builder: ^4.7.0
   dart_style: ^2.3.3
   yaml: ^3.1.2
+  args: ^2.4.2
 
 dev_dependencies:
   flutter_test:
