@@ -31,8 +31,19 @@ Future<void> main(List<String> args) async {
 
   final yamlConfigParser = YamlConfigParser(configPath);
   final oltsConfig = yamlConfigParser.parseOltsConfig();
+  final extensionFactory = TextStyleExtensionBuilderFactory(oltsConfig);
 
-  final codeGenerator = CodeGenerator(TextStyleExtensionBuilderFactory(oltsConfig));
+  final codeGenerator = CodeGenerator([
+    extensionFactory.size,
+    extensionFactory.weight,
+    extensionFactory.color,
+    extensionFactory.fontFamily,
+    extensionFactory.style,
+    extensionFactory.decoration,
+    extensionFactory.decorationStyle,
+    extensionFactory.overflow,
+  ]);
+
   final formattedCode = codeGenerator.generate();
 
   final resultFile = File(resultPath ?? 'lib/one_line_text_style.dart');

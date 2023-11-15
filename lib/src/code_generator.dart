@@ -1,28 +1,14 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
 import 'package:one_line_text_style/src/text_style_extention_builder.dart';
-import 'package:one_line_text_style/src/text_style_extention_builder_factory.dart';
 
 class CodeGenerator {
 
-  final TextStyleExtensionBuilderFactory factory;
+  List<TextStyleExtensionBuilder> builders;
 
-  CodeGenerator(this.factory);
+  CodeGenerator(this.builders);
 
   String generate() {
-    return _assembleDartCode([
-      factory.size,
-      factory.weight,
-      factory.color,
-      factory.fontFamily,
-      factory.style,
-      factory.decoration,
-      factory.decorationStyle,
-      factory.overflow,
-    ]);
-  }
-
-  String _assembleDartCode(List<TextStyleExtensionBuilder> builders) {
     final emitter = DartEmitter();
 
     final rawDartCodeChunks = builders.map((builder) =>
