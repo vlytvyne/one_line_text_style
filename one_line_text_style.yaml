@@ -3,8 +3,8 @@ one_line_text_style:
     prefix: s
     step: 2
     min: 8
-    max: 10
-    apply_prefix_to_custom_values: false
+    max: 30
+    apply_prefix_to_custom_values: true
     custom_values:
       medium: 30
       large: 40
