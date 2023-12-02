@@ -1,0 +1,34 @@
+# Contains all possible configurations. All properties are optional.
+
+one_line_text_style:
+  size:                                   # fontSize
+    prefix: s                             # Prefix of extension property. [size] is used by default
+    step: 2                               # size step e.g. 8, 10, 12. 2 is default value
+    min: 8                                # minimum size. 8 is default value
+    max: 30                               # maximum size. 56 is default value
+    apply_prefix_to_custom_values: true   # whether to apply prefix to custom values
+    custom_values:                        # custom values of extension
+      medium: 30
+      large: 40
+  color:                                  # color
+    prefix: color
+    custom_values:                        # Default values for color are white, black, grey, red. You can override those here or add other if needed. Both 0xFF000000 and #000000 syntax is appropriate.
+      yellow: '#AAAAAA'
+  weight:                                 # fontWeight
+    prefix: w
+    apply_prefix_to_custom_values: false
+    custom_values:                        # Default values for weight are semibold, bold. You can override those here or add other if needed.
+      extraThin: 100
+  font_family:                            # fontFamily
+    prefix: ff
+    custom_values:
+      dmsans: 'DM Sans'
+  overflow:                               # overflow
+    prefix: 'over'
+  style:                                  # fontStyle
+    prefix: ''
+  decoration:                             # decoration
+    prefix: ''
+  decoration_style:                       # decorationStyle
+    prefix: ''
+

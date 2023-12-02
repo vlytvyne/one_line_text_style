@@ -1,11 +1,10 @@
 name: one_line_text_style
-description: A new Flutter project.
+description: Generates text style extentions
 version: 0.0.1
-homepage:
+#homepage:
 
 environment:
-  sdk: '>=3.0.6 <4.0.0'
-  flutter: ">=1.17.0"
+  sdk: '^3.0.0'
 
 dependencies:
   flutter:
@@ -18,4 +17,3 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0

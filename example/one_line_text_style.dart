@@ -170,23 +170,23 @@ extension DecorationExtension on TextStyle {
 
 extension DecorationStyleExtension on TextStyle {
 
-  TextStyle get dsSolid => copyWith(
+  TextStyle get solid => copyWith(
     decorationStyle: TextDecorationStyle.solid,
   );
 
-  TextStyle get dsDouble => copyWith(
+  TextStyle get double => copyWith(
     decorationStyle: TextDecorationStyle.double,
   );
 
-  TextStyle get dsDotted => copyWith(
+  TextStyle get dotted => copyWith(
     decorationStyle: TextDecorationStyle.dotted,
   );
 
-  TextStyle get dsDashed => copyWith(
+  TextStyle get dashed => copyWith(
     decorationStyle: TextDecorationStyle.dashed,
   );
 
-  TextStyle get dsWavy => copyWith(
+  TextStyle get wavy => copyWith(
     decorationStyle: TextDecorationStyle.wavy,
   );
 
