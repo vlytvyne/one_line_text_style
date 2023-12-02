@@ -3,10 +3,19 @@ description: Generates TextStyle extentions
 version: 0.1.0
 repository: https://github.com/vlytvyne/one_line_text_style
 issue_tracker: https://github.com/vlytvyne/one_line_text_style/issues
+
 topics:
   - ui
   - codegen
   - widgets
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
 
 environment:
   sdk: '^3.0.0'
