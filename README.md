@@ -92,22 +92,22 @@ final ts = TextStyle(
 );
 ...
 return Text(  
-  'Title,  
+  'Title',
   style: ts.size48.white.semibold.italic.nocturne,  
 );
 ...
 return Text(  
-  'Description,  
+  'Description',
   style: ts.size20.black.dmsans.overflowEllipsis,  
 );
 ...
 return Text(  
-  'Clickable link,  
+  'Clickable link',
   style: ts.size16.yellow.underline,  
 );
 ...
 return Text(  
-  'Error,  
+  'Error',
   style: ts.size20.red.bold,  
 );
 ```
