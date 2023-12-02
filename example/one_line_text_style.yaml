@@ -2,11 +2,11 @@
 
 one_line_text_style:
   size:                                   # fontSize
-    prefix: s                             # Prefix of extension property. [size] is used by default
+    prefix: s                             # Prefix of an extension property. [size] is used by default as a name can't start with a digit
     step: 2                               # size step e.g. 8, 10, 12. 2 is default value
     min: 8                                # minimum size. 8 is default value
     max: 30                               # maximum size. 60 is default value
-    apply_prefix_to_custom_values: true   # whether to apply prefix to custom values
+    apply_prefix_to_custom_values: true   # whether to apply prefix to custom values. Default value is false
     custom_values:                        # custom values of extension
       medium: 30
       large: 40
@@ -15,7 +15,7 @@ one_line_text_style:
     custom_values:                        # Default values for color are white, black, grey, red. You can override those here or add other if needed. Both 0xFF000000 and #000000 syntax is appropriate.
       yellow: '#AAAAAA'
   weight:                                 # fontWeight
-    prefix: w
+    prefix: weight                        # [w] is used by default as a name can't start with a digit
     apply_prefix_to_custom_values: false
     custom_values:                        # Default values for weight are semibold, bold. You can override those here or add other if needed.
       extraThin: 100
@@ -24,7 +24,7 @@ one_line_text_style:
     custom_values:
       dmsans: 'DM Sans'
   overflow:                               # overflow
-    prefix: 'over'                        # default value [overflow]
+    prefix: 'over'                        # [overflow] is used by default
   style:                                  # fontStyle
     prefix: ''
   decoration:                             # decoration

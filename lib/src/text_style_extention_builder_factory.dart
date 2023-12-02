@@ -31,7 +31,7 @@ class TextStyleExtensionBuilderFactory {
     customValues.addAll(config.sizeConfig?.customValues ?? {});
 
     applyPrefixToCustomValues =
-        config.sizeConfig?.applyPrefixToCustomValues ?? true;
+        config.sizeConfig?.applyPrefixToCustomValues ?? false;
 
     return TextStyleExtensionBuilder(
       name: 'SizeExtension',
