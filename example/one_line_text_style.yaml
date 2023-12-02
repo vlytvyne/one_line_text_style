@@ -24,7 +24,7 @@ one_line_text_style:
     custom_values:
       dmsans: 'DM Sans'
   overflow:                               # overflow
-    prefix: 'over'
+    prefix: 'over'                        # default value [overflow]
   style:                                  # fontStyle
     prefix: ''
   decoration:                             # decoration

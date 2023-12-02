@@ -14,6 +14,17 @@ class _YamlKeys {
   static const String decoration = 'decoration';
   static const String decorationStyle = 'decoration_style';
 
+  static const List<String> topLevelKeys = [
+    size,
+    color,
+    weight,
+    fontFamily,
+    overflow,
+    style,
+    decoration,
+    decorationStyle,
+  ];
+
   static const String prefix = 'prefix';
   static const String step = 'step';
   static const String min = 'min';
@@ -30,6 +41,10 @@ class YamlConfigParser {
 
   OltsConfig parseOltsConfig() {
     final dataMap = _extractConfig();
+
+    for (var key in _YamlKeys.topLevelKeys) {
+      dataMap.putIfAbsent(key, () => {});
+    }
 
     SizeConfig sizeConfig = SizeConfig()
       ..prefix = dataMap[_YamlKeys.size][_YamlKeys.prefix]
