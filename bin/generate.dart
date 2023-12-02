@@ -23,7 +23,7 @@ Future<void> main(List<String> args) async {
 
   if (parsedArgs['help']) {
     print('Usage:\n  dart run one_line_text_style:generate --$_configPathOption <file> --$_resultPathOption <file>');
-    exit(1);
+    exit(0);
   }
 
   final configPath = parsedArgs[_configPathOption];

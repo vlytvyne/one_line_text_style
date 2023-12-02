@@ -82,8 +82,7 @@ class YamlConfigParser {
     }
     return Map.fromEntries(dataMap.entries.map((e) => MapEntry(e.key, e.value.toString())));
   }
-
-  /// https://github.com/jonbhanson/flutter_native_splash/blob/master/lib/cli_commands.dart
+  
   Map<String, dynamic> _extractConfig() {
     File file;
 
