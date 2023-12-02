@@ -105,12 +105,14 @@ class YamlConfigParser {
       if (File(userDefinedFilePath!).existsSync()) {
         file = File(userDefinedFilePath!);
       } else {
-        throw Exception('The config file `$userDefinedFilePath` was not found.');
+        print('The config file `$userDefinedFilePath` was not found.');
+        exit(1);
       }
     /// At the project root
     } else if (File('one_line_text_style.yaml').existsSync()) {
       file = File('one_line_text_style.yaml');
     } else {
+      print('No `one_line_text_style.yaml` file is found at the project root, `pubspec.yaml` will be used.');
       file = File('pubspec.yaml');
     }
 
