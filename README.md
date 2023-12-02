@@ -4,19 +4,19 @@ This package generates Extensions for TextStyle so you can write it in one line.
 **Write:**
 ```dart
 return Text(
-'Title,  
-style: ts.size48.white.semibold.italic.nocturne,
+  'Title,  
+  style: ts.size48.white.semibold.italic.nocturne,
 );
 ```
 **Instead of:**
 ```dart
 return Text(  
   'Title',  
-  style: TextStyle(  
-    fontSize: 48,  
-	color: Colors.white,  
+  style: TextStyle(
+    fontSize: 48,
+    color: Colors.white,
     fontWeight: FontWeight.w600,
-    fontStyle: FontStyle.italic,  
+    fontStyle: FontStyle.italic,
     fontFamily: 'NocturneSerif',
   ),  
 );
@@ -82,7 +82,7 @@ This will generate `one_line_text_style.dart` file at the root of your project. 
 
 You can now use generated Extensions to write your TextStyles🎉🎉🎉
 
-```
+```dart
 import '<your_path>/one_line_text_style.dart';
 
 /// Default app (screen/widget) text style
