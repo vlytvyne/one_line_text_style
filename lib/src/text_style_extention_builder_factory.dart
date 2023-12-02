@@ -20,7 +20,7 @@ class TextStyleExtensionBuilderFactory {
     }
 
     final int minSize = config.sizeConfig?.min ?? 8;
-    final int maxSize = config.sizeConfig?.max ?? 56;
+    final int maxSize = config.sizeConfig?.max ?? 60;
     final int step = config.sizeConfig?.step ?? 2;
 
     values = List.generate(
@@ -89,7 +89,7 @@ class TextStyleExtensionBuilderFactory {
     customValues.addAll(config.weightConfig?.customValues ?? {});
 
     applyPrefixToCustomValues =
-        config.weightConfig?.applyPrefixToCustomValues ?? true;
+        config.weightConfig?.applyPrefixToCustomValues ?? false;
 
     return TextStyleExtensionBuilder(
       name: 'WeightExtension',

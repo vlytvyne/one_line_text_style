@@ -5,7 +5,7 @@ one_line_text_style:
     prefix: s                             # Prefix of extension property. [size] is used by default
     step: 2                               # size step e.g. 8, 10, 12. 2 is default value
     min: 8                                # minimum size. 8 is default value
-    max: 30                               # maximum size. 56 is default value
+    max: 30                               # maximum size. 60 is default value
     apply_prefix_to_custom_values: true   # whether to apply prefix to custom values
     custom_values:                        # custom values of extension
       medium: 30

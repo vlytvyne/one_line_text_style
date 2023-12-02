@@ -117,7 +117,8 @@ class YamlConfigParser {
     final Map yamlMap = loadYaml(file.readAsStringSync()) as Map;
 
     if (yamlMap['one_line_text_style'] is! Map) {
-      throw Exception('Your `${file.path}` file does not contain a `one_line_text_style` section.',);
+      print('Your `${file.path}` file does not contain a `one_line_text_style` section.\nDefault configuration is used');
+      return {};
     }
 
     return _convertYamlToMap(yamlMap['one_line_text_style'] as YamlMap);
