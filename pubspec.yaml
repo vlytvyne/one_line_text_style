@@ -1,7 +1,12 @@
 name: one_line_text_style
-description: Generates text style extentions
-version: 0.0.1
-#homepage:
+description: Generates TextStyle extentions
+version: 0.1.0
+repository: https://github.com/vlytvyne/one_line_text_style
+issue_tracker: https://github.com/vlytvyne/one_line_text_style/issues
+topics:
+  - ui
+  - codegen
+  - widgets
 
 environment:
   sdk: '^3.0.0'
