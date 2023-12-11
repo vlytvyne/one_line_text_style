@@ -1,5 +1,5 @@
 name: one_line_text_style
-description: Generates TextStyle extentions
+description: This package simplifies the process of creating and applying text styles by introducing a set of convenient extensions, making your code cleaner, more readable, and more maintainable.
 version: 0.3.0
 repository: https://github.com/vlytvyne/one_line_text_style
 issue_tracker: https://github.com/vlytvyne/one_line_text_style/issues
