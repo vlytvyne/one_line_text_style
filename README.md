@@ -4,7 +4,7 @@ This package generates Extensions for TextStyle so you can write it in one line.
 **Write:**
 ```dart
 return Text(
-  'Title,  
+  'Title',
   style: ts.size48.white.semibold.italic.nocturne,
 );
 ```
