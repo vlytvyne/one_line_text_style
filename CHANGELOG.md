@@ -1,3 +1,7 @@
+## 0.4.0
+- Lower dependencies requirements
+- Make description shorter
+
 ## 0.3.0
 - Update README.
 - Add comment at the top of the generated file
