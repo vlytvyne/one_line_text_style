@@ -1,3 +1,7 @@
+## 0.3.0
+- Update README.
+- Add comment at the top of the generated file
+
 ## 0.2.0
 - Update README.
 
