@@ -1,3 +1,6 @@
+## 0.5.0
+- Fix description typo
+
 ## 0.4.0
 - Lower dependencies requirements
 - Make description shorter
