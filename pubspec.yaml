@@ -1,6 +1,6 @@
 name: one_line_text_style
 description: This package simplifies the process of creating and applying text styles by introducing a set of convenient extensions, which make your code more readable.
-version: 0.5.0
+version: 0.6.0
 repository: https://github.com/vlytvyne/one_line_text_style
 issue_tracker: https://github.com/vlytvyne/one_line_text_style/issues
 

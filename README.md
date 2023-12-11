@@ -1,5 +1,5 @@
 ## Overview
-This package generates Extensions for TextStyle so you can write it in one line.
+Simplify your TextStyle declarations with the `one_line_text_style` package, which generates convenient extensions for TextStyle, enabling you to write verbose text styles in a single line of code.
 
 **Write:**
 ```dart
@@ -12,12 +12,12 @@ return Text(
 ```dart
 return Text(  
   'Title',  
-  style: TextStyle(
-    fontSize: 48,
-    color: Colors.white,
-    fontWeight: FontWeight.w600,
-    fontStyle: FontStyle.italic,
-    fontFamily: 'NocturneSerif',
+   style: TextStyle(
+     fontSize: 48,
+     color: Colors.white,
+     fontWeight: FontWeight.w600,
+     fontStyle: FontStyle.italic,
+     fontFamily: 'NocturneSerif',
   ),  
 );
 ```
@@ -25,15 +25,57 @@ return Text(
 
 ## Getting started
 
-Add `one_line_text_style` as a dev_dependency in your pubspec.yaml file.
+Include `one_line_text_style` as a dev_dependency in your pubspec.yaml file.
 ```yaml
 dev_dependencies:
-  one_line_text_style: ^1.0.0
+  one_line_text_style: ^0.6.0
 ```
 
+## Usage
+
+Run the following command in the terminal:
+
+`dart run one_line_text_style:generate`
+
+This generates a `one_line_text_style.dart` file at your project's lib folder. You can change the output file with the `--result-path` argument.
+
+Now, leverage the generated extensions to simplify your TextStyles:
+
+```dart
+import '<your_path>/one_line_text_style.dart';
+
+/// Define default app/screen/widget TextStyle
+final ts = TextStyle(
+  fontSize: 14,
+  color: Colors.black,
+);
+
+/// Then use it like this
+return Text(  
+  'Title',
+  style: ts.size48.white.semibold.italic.nocturne,  
+);
+...
+return Text(  
+  'Description',
+  style: ts.size20.black.dmsans.overflowEllipsis,  
+);
+...
+return Text(  
+  'Clickable link',
+  style: ts.size16.yellow.underline,  
+);
+...
+return Text(  
+  'Error',
+  style: ts.size20.red.bold,  
+);
+```
+
+**Note:** generated file doesn't have `.g.dart` extension and will not be rebuilt with build_runner commands. You are free to change the file per your needs if you don't intend to re-generate it.
+
 ## Configuration (optional)
-You can configure TextStyle extensions in `one_line_text_style.yaml`, `pubspec.yaml`, or specify the config file with `--config-path` argument.
-Here is an example of `one_line_text_style.yaml`
+Customize TextStyle extensions in `one_line_text_style.yaml`, `pubspec.yaml`, or specify the config file with the `--config-path` argument. Here's an example of the `one_line_text_style.yaml`:
 
 ```yaml
 # Contains all possible configurations. All properties are optional.
@@ -71,48 +113,8 @@ one_line_text_style:
     prefix: ''
 ```
 
-## Usage
-Run the following command in the terminal:
-
-`dart run one_line_text_style:generate`
-
-This will generate `one_line_text_style.dart` file at the root of your project. You can change the output file with `--result-path` argument.
-
-**Note:** the file doesn't have `.g.dart` extension and will not be rebuilt with build_runner command. You are free to change the file per your needs if you don't intend to re-generate it.
-
-You can now use generated Extensions to write your TextStyles🎉🎉🎉
-
-```dart
-import '<your_path>/one_line_text_style.dart';
-
-/// Default app (screen/widget) text style
-final ts = TextStyle(
-  fontSize: 14,
-  color: Colors.black,
-);
-...
-return Text(  
-  'Title',
-  style: ts.size48.white.semibold.italic.nocturne,  
-);
-...
-return Text(  
-  'Description',
-  style: ts.size20.black.dmsans.overflowEllipsis,  
-);
-...
-return Text(  
-  'Clickable link',
-  style: ts.size16.yellow.underline,  
-);
-...
-return Text(  
-  'Error',
-  style: ts.size20.red.bold,  
-);
-```
 
 ## Future plans
 
-- Implement a linter for one_line_text_style
-- Implement a script that will substitute TextStyles which use extensions with constant constructors
+- Implement a linter for `one_line_text_style`.
+- Develop a script to substitute TextStyles using extensions with constant constructors.

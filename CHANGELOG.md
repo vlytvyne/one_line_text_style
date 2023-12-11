@@ -1,3 +1,6 @@
+## 0.6.0
+- Enhance README
+
 ## 0.5.0
 - Fix description typo
 
